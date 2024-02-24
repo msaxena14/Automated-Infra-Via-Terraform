@@ -1,4 +1,4 @@
-variable "eip_id" {
+variable "eip" {
     description = "The ID of the Elastic IP address"
     type        = string
 }
