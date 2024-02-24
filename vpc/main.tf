@@ -10,6 +10,9 @@ resource "aws_vpc" "main" {
   }
 }
 
+# creating Elastic IP for NAT-Gateway for pvt-sbnt
+resource "aws_eip" "eip" {}
+
 module "public-subnet" {
   // calling the public module
   source = "./public-subnet"  
