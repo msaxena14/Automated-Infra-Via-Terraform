@@ -1,5 +1,5 @@
 resource "aws_nat_gateway" "nat" {
-  allocation_id = var.eip_id.id
+  allocation_id = var.eip_id
   subnet_id     = var.private-subnet
 
   tags = {
