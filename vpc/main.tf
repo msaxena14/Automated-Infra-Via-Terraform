@@ -13,8 +13,8 @@ resource "aws_vpc" "main" {
 # creating Elastic IP for NAT-Gateway for pvt-sbnt
 resource "aws_eip" "eip" {}
 
+# calling oublic subnet module
 module "public-subnet" {
-  // calling the public module
   source = "./public-subnet"  
 
   // passing the value of vpc_id & cidr_block 
@@ -24,21 +24,23 @@ module "public-subnet" {
 }
 
 module "private-subnet" {
-  // calling the private module
   source = "./private-subnet"
 
   vpc_id    = aws_vpc.main.id
   cidr_block = var.public_subnet_cidr
 }
 
+# calling the internet-gateway module
 module "internet-gateway" {
-  // calling the internet-gateway module
   source = "./internet-gateway"
   vpc_id = aws_vpc.main.id
 }
 
+# calling nat-gateway module with passing elaticip
 module "nat-gateway" {
   source          = "./nat-gateway"
   private-subnet  = module.private-subnet.subnet_id
   eip_id          = aws_eip.eip.id
 }
+
+# Associating Public Subnets to Route Table
