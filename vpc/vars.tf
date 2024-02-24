@@ -9,3 +9,9 @@ variable "vpc_name" {
   type        = string
   default     = "Demo-Terraform"
 }
+
+variable "environment" {
+  description = "Environment in which the resources will be created"
+  type        = string
+  default     = "dev"
+}
