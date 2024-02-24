@@ -15,6 +15,11 @@ variable "vpc_id" {
   type        = string
 }
 
+variable "igw_id" {
+  description = "Provide VPC ID"
+  type        = string
+}
+
 variable "public_subnet_id" {
   description = "Provide public_subnet_id"
   type        = string
