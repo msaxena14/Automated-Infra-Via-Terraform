@@ -10,3 +10,11 @@ resource "aws_vpc" "main" {
   }
 }
 
+module "public_subnet" {
+  source = "./public-subnet"  // Path to the public-subnet module
+
+  // Pass any required variables to the module
+  // For example, if your module requires a vpc_id and a cidr_block, you might do:
+  vpc_id    = aws_vpc.main.id
+  cidr_block = var.public_subnet_cidr
+}
