@@ -47,6 +47,6 @@ module "nat-gateway" {
 module "route_table" {
   source            = "./route-table"
   vpc_id            = aws_vpc.main.id
-  public_subnet_id  = module.public_subnet.id
-  private_subnet_id = module.private_subnet.id
+  public_subnet_id  = module.public-subnet.id
+  private_subnet_id = module.private-subnet.id
 }
