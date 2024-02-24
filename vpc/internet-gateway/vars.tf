@@ -3,7 +3,7 @@ variable "vpc_id" {
   type = string
 }
 
-variable "igw" {
+variable "igw_id" {
   description = "IGW"
 }
 
