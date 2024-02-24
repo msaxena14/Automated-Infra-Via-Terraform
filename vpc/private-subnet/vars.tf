@@ -8,6 +8,18 @@ variable "cidr_block" {
   type        = string
 }
 
+variable "project" {
+  description = "VPC Provisioned via terraform"
+  type        = string
+  default     = "Demo-Terraform"
+}
+
+variable "environment" {
+  description = "Environment in which the resources will be created"
+  type        = string
+  default     = "stage"
+}
+
 variable "private_subnet_cidrs" {
  type        = list(string)
  description = "Private Subnet CIDR values"

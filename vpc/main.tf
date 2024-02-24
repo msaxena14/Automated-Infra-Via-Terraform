@@ -6,11 +6,11 @@ resource "aws_vpc" "main" {
   cidr_block = var.vpc_cidr
 
   tags = {
-    Name = "${var.vpc_name}-${var.environment}-vpc"
+    Name = "${var.project}-${var.environment}-vpc"
   }
 }
 
-module "public_subnet" {
+module "public-subnet" {
   // calling the public module
   source = "./public-subnet"  
 
@@ -20,7 +20,7 @@ module "public_subnet" {
   cidr_block = var.public_subnet_cidr
 }
 
-module "private_subnet" {
+module "private-subnet" {
   // calling the private module
   source = "./private-subnet"
 
@@ -32,4 +32,10 @@ module "internet-gateway" {
   // calling the internet-gateway module
   source = "./internet-gateway"
   vpc_id = aws_vpc.main.id
+}
+
+module "nat_gateway" {
+  source     = "./nat-gateway"
+  private-subnet = module.private-subnet.subnet_id
+  eip_id     = module.eip.id
 }

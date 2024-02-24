@@ -4,7 +4,7 @@ variable "region" {
   default     = "ap-south-1"  # You can change the default to the desired region
 }
 
-variable "vpc_name" {
+variable "project" {
   description = "VPC Provisioned via terraform"
   type        = string
   default     = "Demo-Terraform"
@@ -13,7 +13,7 @@ variable "vpc_name" {
 variable "environment" {
   description = "Environment in which the resources will be created"
   type        = string
-  default     = "dev"
+  default     = "stage"
 }
 
 variable "vpc_cidr" {
