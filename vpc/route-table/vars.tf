@@ -15,11 +15,6 @@ variable "vpc_id" {
   type        = string
 }
 
-variable "nat_gateway_id" {
-  description = "Provide NAT-Gateway ID"
-  type        = string
-}
-
 variable "public_subnet_id" {
   description = "Provide public_subnet_id"
   type        = string
