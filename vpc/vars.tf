@@ -31,4 +31,5 @@ variable "public_subnet_cidr" {
 variable "eip" {
   description = "ElasticIP"
   type = string
+  default = "13.14.199.200"
 }

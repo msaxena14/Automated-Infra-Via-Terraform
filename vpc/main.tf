@@ -37,5 +37,5 @@ module "internet-gateway" {
 module "nat-gateway" {
   source          = "./nat-gateway"
   private-subnet  = module.private-subnet.subnet_id
-  eip_id          = module.eip.id
+  eip_id          = aws_eip.eip.id
 }

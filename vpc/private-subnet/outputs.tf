@@ -1,4 +1,4 @@
 output "subnet_id" {
   description = "The ID of the subnet"
-  value       = aws_subnet.private_subnets[count.index]
+  value       = aws_subnet.private_subnets[*].id
 }
