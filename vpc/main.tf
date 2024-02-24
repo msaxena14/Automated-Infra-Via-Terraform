@@ -28,7 +28,7 @@ module "private_subnet" {
   cidr_block = var.public_subnet_cidr
 }
 
-module "igw" {
+module "internet-gateway" {
   // calling the internet-gateway module
   source = "./internet-gateway"
   vpc_id = aws_vpc.main.id
