@@ -9,3 +9,10 @@ resource "aws_vpc" "main" {
     Name = "${var.vpc_name}-${var.environment}-vpc"
   }
 }
+
+module "public-subnet" {
+  source = "../public-subnet"
+  vpc_id = module.vpc.id
+  cidr   = var.public_subnet_cidr
+  public = true
+}
