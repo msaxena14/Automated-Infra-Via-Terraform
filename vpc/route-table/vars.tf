@@ -9,3 +9,23 @@ variable "environment" {
   type        = string
   default     = "stage"
 }
+
+variable "vpc_id" {
+  description = "Provide VPC ID"
+  type        = string
+}
+
+variable "nat_gateway_id" {
+  description = "Provide NAT-Gateway ID"
+  type        = string
+}
+
+variable "public_subnet_id" {
+  description = "Provide public_subnet_id"
+  type        = string
+}
+
+variable "private_subnet_id" {
+  description = "Provide private_subnet_id"
+  type        = string
+}

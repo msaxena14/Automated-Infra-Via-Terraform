@@ -43,4 +43,10 @@ module "nat-gateway" {
   eip_id          = aws_eip.eip.id
 }
 
-# Associating Public Subnets to Route Table
+# calling route-table module
+module "route_table" {
+  source            = "./route-table"
+  vpc_id            = aws_vpc.main.id
+  public_subnet_id  = module.public_subnet.id
+  private_subnet_id = module.private_subnet.id
+}
