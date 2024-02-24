@@ -1,10 +1,9 @@
 variable "eip_id" {
-    description = "The ID of the Elastic IP address"
+  description = "The ID of the Elastic IP address"
 }
 
 variable "private-subnet" {
-    description = "The ID of the Elastic IP address"
-    type        = string
+  description = "The ID of the Elastic IP address"
 }
 
 variable "project" {
