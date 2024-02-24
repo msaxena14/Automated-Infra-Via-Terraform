@@ -11,7 +11,7 @@ resource "aws_vpc" "main" {
 }
 
 module "public_subnet" {
-  // calling the source module
+  // calling the public module
   source = "./public-subnet"  
 
   // passing the value of vpc_id & cidr_block 
@@ -21,8 +21,15 @@ module "public_subnet" {
 }
 
 module "private_subnet" {
+  // calling the private module
   source = "./private-subnet"
 
   vpc_id    = aws_vpc.main.id
   cidr_block = var.public_subnet_cidr
+}
+
+module "igw" {
+  // calling the internet-gateway module
+  source = "./internet-gateway"
+  vpc_id = aws_vpc.main.id
 }

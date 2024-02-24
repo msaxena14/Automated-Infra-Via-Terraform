@@ -1,5 +1,5 @@
 resource "aws_internet_gateway" "gw" {
-  vpc_id = aws_vpc.main.id
+  vpc_id = var.vpc_id
  
   tags = {
     Name = "Project VPC IG"
