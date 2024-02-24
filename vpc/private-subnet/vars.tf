@@ -11,7 +11,7 @@ variable "cidr_block" {
 variable "private_subnet_cidrs" {
  type        = list(string)
  description = "Private Subnet CIDR values"
- default     = ["10.0.4.0/24", "10.0.5.0/24", "10.0.6.0/24"]
+ default     = ["10.0.197.0/24", "10.0.198.0/24", "10.0.199.0/24"]
 }
 
 variable "azs" {
