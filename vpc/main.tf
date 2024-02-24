@@ -34,7 +34,6 @@ module "private-subnet" {
 module "internet-gateway" {
   source = "./internet-gateway"
   vpc_id = aws_vpc.main.id
-  # igw_id = module.internet-gateway.igw_id
 }
 
 # calling nat-gateway module with passing elaticip
@@ -45,7 +44,7 @@ module "nat-gateway" {
 }
 
 # calling route-table module
-module "route_table" {
+module "route-table" {
   source            = "./route-table"
   igw_id            = aws_internet_gateway.igw.id
   vpc_id            = aws_vpc.main.id
