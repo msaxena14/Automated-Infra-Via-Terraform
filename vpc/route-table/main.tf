@@ -7,6 +7,6 @@ resource "aws_route_table" "second_rt" {
     }
  
     tags = {
-        Name = "2nd Route Table"
+        Name = "${var.project}-${var.environment}-Route-Table-2"
     }
 }
