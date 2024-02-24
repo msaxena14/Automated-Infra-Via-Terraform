@@ -34,8 +34,8 @@ module "internet-gateway" {
   vpc_id = aws_vpc.main.id
 }
 
-module "nat_gateway" {
-  source     = "./nat-gateway"
-  private-subnet = module.private-subnet.subnet_id
-  eip_id     = module.eip.id
+module "nat-gateway" {
+  source          = "./nat-gateway"
+  private-subnet  = module.private-subnet.subnet_id
+  eip_id          = module.eip.id
 }
