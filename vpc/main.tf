@@ -33,7 +33,7 @@ module "private-subnet" {
 
   vpc_id    = "${aws_vpc.main.id}"
   # cidr_block = var.private_subnet_cidr
-  cidr_block = "${module.public-subnet.subnet_id}"
+  cidr_block = "${module.private-subnet.subnet_id}"
 }
 
 # calling the internet-gateway module
