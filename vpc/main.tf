@@ -27,6 +27,7 @@ module "public-subnet" {
   cidr_block = var.public_subnet_cidr
 }
 
+# calling private subnet module
 module "private-subnet" {
   source = "./private-subnet"
 
