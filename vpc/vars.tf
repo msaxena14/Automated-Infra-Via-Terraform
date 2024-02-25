@@ -40,7 +40,7 @@ variable "private_subnet_id" {
   default     = "subnet-5678"
 }
 
-variable "private_subnet_id" {
+variable "private_subnet_cidr" {
   description = "Provide CIDR Range"
   type        = string
   default     = "10.0.7.0/24"
