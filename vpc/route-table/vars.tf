@@ -17,7 +17,6 @@ variable "vpc_id" {
 
 variable "igw_id" {
   description = "Provide IGW ID"
-  type        = string
 }
 
 variable "public_subnet_id" {
