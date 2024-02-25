@@ -23,12 +23,12 @@ variable "nat_gateway_id" {
     description = "Provide NAT-Gateway ID"
 }
 
-variable "public_subnet_id" {
+variable "public_subnet_ids" {
   description = "Provide public_subnet_id"
-  type        = string
+  type        = list(string)
 }
 
-variable "private_subnet_id" {
+variable "private_subnet_ids" {
   description = "Provide private_subnet_id"
-  type        = string
+  type        = list(string)
 }

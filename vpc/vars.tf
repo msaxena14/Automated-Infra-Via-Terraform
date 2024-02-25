@@ -22,7 +22,7 @@ variable "vpc_cidr" {
   default     = "10.0.0.0/16"
 }
 
-variable "public_subnet_id" {
+variable "public_subnet_ids" {
   description = "Public Subnet ID"
   type        = string
   default     = "subnet-1234"
@@ -34,7 +34,7 @@ variable "public_subnet_cidr" {
   default     = "10.0.1.0/24"
 }
 
-variable "private_subnet_id" {
+variable "private_subnet_ids" {
   description = "Private Subnet ID"
   type        = string
   default     = "subnet-5678"
