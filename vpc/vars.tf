@@ -54,4 +54,5 @@ variable "eip" {
 
 variable "igw_id" {
   description = "Internet Gateway ID"
+  default     =  "igw-1234567890" 
 }
