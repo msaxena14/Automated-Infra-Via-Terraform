@@ -47,8 +47,9 @@ module "nat-gateway" {
 # calling route-table module
 module "route-table" {
   source            = "./route-table"
+  count             = length(module.public-subnet.subnet_id[*])
   igw_id            = module.internet-gateway.igw
   vpc_id            = aws_vpc.main.id
-  public_subnet_id  = module.public-subnet.subnet_id[*]
-  private_subnet_id = module.private-subnet.subnet_id[*]
+  public_subnet_id  = element(module.public-subnet.subnet_id[*], count.index)
+  private_subnet_id = element(module.private-subnet.subnet_id[*], count.index)
 }
