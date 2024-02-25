@@ -47,7 +47,7 @@ module "nat-gateway" {
 # calling route-table module
 module "route-table" {
   source            = "./route-table"
-  igw_id            = aws_internet_gateway.igw.id
+  igw_id            = internet-gateway.igw.id
   vpc_id            = aws_vpc.main.id
   public_subnet_id  = module.public-subnet.subnet_id
   private_subnet_id = module.private-subnet.subnet_id
