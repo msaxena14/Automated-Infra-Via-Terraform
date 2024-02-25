@@ -19,14 +19,14 @@ module "public-subnet" {
 
   // passing the value of vpc_id & cidr_block 
   // genrated from above snippet to public-subnet module
-  vpc_id    = aws_vpc.main.id
+  vpc_id    = "${aws_vpc.main.id}"
   cidr_block = var.public_subnet_cidr
 }
 
 module "private-subnet" {
   source = "./private-subnet"
 
-  vpc_id    = aws_vpc.main.id
+  vpc_id    = "${aws_vpc.main.id}"
   cidr_block = var.private_subnet_cidr
 }
 
@@ -34,13 +34,13 @@ module "private-subnet" {
 module "internet-gateway" {
   source = "./internet-gateway"
   igw_id = "${module.internet-gateway.igw_id}"
-  vpc_id = aws_vpc.main.id
+  vpc_id = "${aws_vpc.main.id}"
 }
 
 # calling nat-gateway module with passing elaticip
 module "nat-gateway" {
   source          = "./nat-gateway"
-  private-subnet  = module.private-subnet.subnet_id
+  private-subnet  = "${module.private-subnet.subnet_id}"
   eip_id          = aws_eip.eip.id
 }
 
@@ -48,8 +48,8 @@ module "nat-gateway" {
 module "route-table" {
   source            = "./route-table"
   count             = length(module.public-subnet.subnet_id[*])
-  igw_id            = module.internet-gateway.igw_id
-  vpc_id            = aws_vpc.main.id
+  igw_id            = "${module.internet-gateway.igw_id}"
+  vpc_id            = "${aws_vpc.main.id}"
   public_subnet_id  = element(module.public-subnet.subnet_id[*], count.index)
   private_subnet_id = element(module.private-subnet.subnet_id[*], count.index)
 }
