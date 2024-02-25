@@ -43,8 +43,8 @@ module "internet-gateway" {
 }
 
 # fetching value of default route-table
-output "default_route_table_id" {
-  value = data.aws_vpc.main.default_route_table_id
+data "aws_default_route_table" "default" {
+  default_route_table_id = aws_vpc.main.default_route_table_id
 }
 
 # updating default route table as public-rt by attaching IGW
