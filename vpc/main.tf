@@ -11,11 +11,15 @@ resource "aws_vpc" "main" {
 }
 
 # creating Elastic IP for NAT-Gateway for pvt-sbnt
-resource "aws_eip" "eip" {}
+resource "aws_eip" "eip" {
+  tags = {
+    Name = "${var.project}-${var.environment}-eip"
+  }
+}
 
-# calling oublic subnet module
+# calling public subnet module
 module "public-subnet" {
-  source = "./public-subnet"  
+  source = "./public-subnet"
 
   // passing the value of vpc_id & cidr_block 
   // genrated from above snippet to public-subnet module
