@@ -16,7 +16,7 @@ variable "vpc_id" {
 }
 
 variable "igw_id" {
-  description = "Provide VPC ID"
+  description = "Provide IGW ID"
   type        = string
 }
 
