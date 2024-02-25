@@ -19,6 +19,7 @@ resource "aws_route_table_association" "public" {
   route_table_id = aws_route_table.public-rt.id
 }
 
+# creating private route table by defining path to internet via nat-gateway
 resource "aws_route_table" "private-rt" {
     vpc_id = var.vpc_id
  
@@ -32,7 +33,7 @@ resource "aws_route_table" "private-rt" {
     }
 }
 
-# associating all the public subnets to the public-rt
+# associating all the public subnets to the private-rt
 resource "aws_route_table_association" "private" {
   count          = length(var.private_subnet_ids)
   subnet_id      = var.private_subnet_ids[count.index]
