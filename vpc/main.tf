@@ -49,6 +49,6 @@ module "route-table" {
   source            = "./route-table"
   igw_id            = module.internet-gateway.igw
   vpc_id            = aws_vpc.main.id
-  public_subnet_id  = module.public-subnet.public_subnets[*]
-  private_subnet_id = module.private-subnet.private_subnets[*]
+  public_subnet_id  = module.public-subnet.subnet_id[*]
+  private_subnet_id = module.private-subnet.subnet_id[*]
 }
