@@ -19,7 +19,7 @@ resource "aws_eip" "eip" {
 
 # calling public subnet module
 module "public-subnet" {
-  source = "./public-subnet"
+  source = "./modules/public-subnet"
 
   // passing the value of vpc_id & cidr_block 
   // genrated from above snippet to public-subnet module
@@ -29,7 +29,7 @@ module "public-subnet" {
 
 # calling private subnet module
 module "private-subnet" {
-  source = "./private-subnet"
+  source = "./modules/private-subnet"
 
   vpc_id    = "${aws_vpc.main.id}"
   # cidr_block = var.private_subnet_cidr
@@ -38,21 +38,21 @@ module "private-subnet" {
 
 # calling the internet-gateway module
 module "internet-gateway" {
-  source = "./internet-gateway"
+  source = "./modules/internet-gateway"
   igw_id = "${module.internet-gateway.igw_id}"
   vpc_id = "${aws_vpc.main.id}"
 }
 
 # calling nat-gateway module with passing elaticip
 module "nat-gateway" {
-  source          = "./nat-gateway"
+  source          = "./modules/nat-gateway"
   private-subnet  = "${module.private-subnet.subnet_id}"
   eip_id          = aws_eip.eip.id
 }
 
 # calling route-table module
 module "route-table" {
-  source            = "./route-table"
+  source            = "./modules/route-table"
   vpc_id            = "${aws_vpc.main.id}"
   public_subnet_ids  = "${module.public-subnet.subnet_id[*]}"
   private_subnet_ids = "${module.private-subnet.subnet_id[*]}"
