@@ -33,7 +33,7 @@ module "private-subnet" {
 # calling the internet-gateway module
 module "internet-gateway" {
   source = "./internet-gateway"
-  igw_id = aws_internet_gateway.igw.id
+  igw_id = "${module.internet-gateway.igw_id}"
   vpc_id = aws_vpc.main.id
 }
 
