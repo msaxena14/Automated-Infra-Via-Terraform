@@ -49,6 +49,7 @@ module "route-table" {
   source            = "./route-table"
   count             = length(module.public-subnet.subnet_id[*])
   igw_id            = "${module.internet-gateway.igw_id}"
+  nat_gateway_id    = "${module.nat-gateway.nat_gateway_id}"
   vpc_id            = "${aws_vpc.main.id}"
   public_subnet_id  = element(module.public-subnet.subnet_id[*], count.index)
   private_subnet_id = element(module.private-subnet.subnet_id[*], count.index)

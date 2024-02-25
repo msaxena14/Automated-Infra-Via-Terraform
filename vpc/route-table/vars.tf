@@ -19,6 +19,10 @@ variable "igw_id" {
   description = "Provide IGW ID"
 }
 
+variable "nat_gateway_id" {
+    description = "Provide NAT-Gateway ID"
+}
+
 variable "public_subnet_id" {
   description = "Provide public_subnet_id"
   type        = string
