@@ -37,6 +37,19 @@ module "internet-gateway" {
   vpc_id = aws_vpc.main.id
 }
 
+# fetching value of default route-table
+output "default_route_table_id" {
+  value = data.aws_vpc.main.default_route_table_id
+}
+
+# updating default route table as public-rt by attaching IGW
+resource "aws_route" "main" {
+  route_table_id         = data.aws_vpc.main.default_route_table_id
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id             = aws_internet_gateway.igw.id
+}
+
+
 # calling nat-gateway module with passing elaticip
 module "nat-gateway" {
   source          = "./nat-gateway"
@@ -44,11 +57,11 @@ module "nat-gateway" {
   eip_id          = aws_eip.eip.id
 }
 
-# calling route-table module
-module "route-table" {
-  source            = "./route-table"
-  igw_id            = module.internet-gateway.igw.id
-  vpc_id            = aws_vpc.main.id
-  public_subnet_id  = module.public-subnet.subnet_id
-  private_subnet_id = module.private-subnet.subnet_id
-}
+# # calling route-table module
+# module "route-table" {
+#   source            = "./route-table"
+#   igw_id            = module.internet-gateway.igw.id
+#   vpc_id            = aws_vpc.main.id
+#   public_subnet_id  = module.public-subnet.subnet_id
+#   private_subnet_id = module.private-subnet.subnet_id
+# }
