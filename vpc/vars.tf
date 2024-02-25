@@ -36,6 +36,5 @@ variable "eip" {
 
 variable "igw_id" {
   description = "Internet Gateway ID"
-  type        = string
   default     = "igw-0e8f2d3a3a3a3a3a3"
 }
