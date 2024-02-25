@@ -3,7 +3,7 @@ resource "aws_route_table" "second_rt" {
  
     route {
         cidr_block = "0.0.0.0/0"
-        gateway_id = "${module.internet-gateway.igw}"
+        gateway_id = var.igw_id.id
     }
  
     tags = {
