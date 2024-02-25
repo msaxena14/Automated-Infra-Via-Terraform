@@ -5,7 +5,7 @@ variable "vpc_id" {
 
 variable "cidr_block" {
   description = "The CIDR block for the subnet"
-  type        = string
+  type        = list(string)
 }
 
 variable "project" {
