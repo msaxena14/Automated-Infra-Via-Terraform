@@ -44,11 +44,11 @@ module "nat-gateway" {
   eip_id          = aws_eip.eip.id
 }
 
-# # calling route-table module
-# module "route-table" {
-#   source            = "./route-table"
-#   igw_id            = module.internet-gateway.igw
-#   vpc_id            = aws_vpc.main.id
-#   public_subnet_id  = module.public-subnet.subnet_id
-#   private_subnet_id = module.private-subnet.subnet_id
-# }
+# calling route-table module
+module "route-table" {
+  source            = "./route-table"
+  igw_id            = module.internet-gateway.aws_internet_gateway.igw
+  vpc_id            = aws_vpc.main.id
+  public_subnet_id  = module.public-subnet.aws_subnet.private_subnets[*].id
+  private_subnet_id = module.private-subnet.aws_subnet.private_subnets[*].id
+}
