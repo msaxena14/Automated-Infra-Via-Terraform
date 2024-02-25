@@ -32,7 +32,8 @@ module "private-subnet" {
   source = "./private-subnet"
 
   vpc_id    = "${aws_vpc.main.id}"
-  cidr_block = var.private_subnet_cidr
+  # cidr_block = var.private_subnet_cidr
+  cidr_block = "${module.public-subnet.subnet_id}"
 }
 
 # calling the internet-gateway module
@@ -52,9 +53,9 @@ module "nat-gateway" {
 # calling route-table module
 module "route-table" {
   source            = "./route-table"
-  igw_id            = "${module.internet-gateway.igw_id}"
-  nat_gateway_id    = "${module.nat-gateway.nat_gateway_id}"
   vpc_id            = "${aws_vpc.main.id}"
   public_subnet_ids  = "${module.public-subnet.subnet_id[*]}"
   private_subnet_ids = "${module.private-subnet.subnet_id[*]}"
+  igw_id            = "${module.internet-gateway.igw_id}"
+  nat_gateway_id    = "${module.nat-gateway.nat_gateway_id}"
 }
