@@ -1,53 +1,47 @@
 variable "region" {
   description = "AWS region where resources will be created"
   type        = string
-  default     = "ap-south-1"  # You can change the default to the desired region
+  default     = "us-east-1"
 }
 
 variable "project" {
   description = "VPC Provisioned via terraform"
   type        = string
-  default     = "Demo-Terraform"
+  default     = "poc-eks-argocd"
+}
+
+variable "team" {
+  description = "Team name"
+  type        = string
+  default     = "infra-team"
 }
 
 variable "environment" {
   description = "Environment in which the resources will be created"
   type        = string
-  default     = "stage"
+  default     = "dev"
 }
 
 variable "vpc_cidr" {
   description = "Provide CIDR Range"
   type        = string
-  default     = "10.0.0.0/16"
+  default     = "10.60.0.0/16"
 }
 
-variable "public_subnet_ids" {
-  description = "Public Subnet ID"
-  type        = string
-  default     = "subnet-1234"
+variable "azs" {
+  description = "Availability Zones to spread subnets across"
+  type        = list(string)
+  default     = ["us-east-1a", "us-east-1b"]
 }
 
-variable "public_subnet_cidr" {
-  description = "Provide CIDR Range"
-  type        = string
-  default     = "10.0.1.0/24"
+variable "public_subnet_cidrs" {
+  description = "Public Subnet CIDR values"
+  type        = list(string)
+  default     = ["10.60.0.0/20", "10.60.16.0/20"]
 }
 
-variable "private_subnet_ids" {
-  description = "Private Subnet ID"
-  type        = string
-  default     = "subnet-5678"
-}
-
-variable "private_subnet_cidr" {
-  description = "Provide CIDR Range"
-  type        = string
-  default     = "10.0.7.0/24"
-}
-
-variable "eip" {
-  description = "ElasticIP"
-  type = string
-  default = "13.14.199.200"
+variable "private_subnet_cidrs" {
+  description = "Private Subnet CIDR values"
+  type        = list(string)
+  default     = ["10.60.32.0/20", "10.60.48.0/20"]
 }

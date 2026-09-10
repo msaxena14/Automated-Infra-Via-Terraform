@@ -3,7 +3,7 @@ variable "eip_id" {
 }
 
 variable "private-subnet" {
-  description = "The ID of the Elastic IP address"
+  description = "List of private subnet IDs (NAT gateway is placed in the first one)"
 }
 
 variable "project" {

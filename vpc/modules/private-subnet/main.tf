@@ -5,6 +5,7 @@ resource "aws_subnet" "private_subnets" {
   availability_zone = element(var.azs, count.index)
  
   tags = {
-    Name = "${var.project}-${var.environment}-Private-Subnet-${count.index + 1}"
+    Name                              = "${var.project}-${var.environment}-Private-Subnet-${var.azs[count.index]}"
+    "kubernetes.io/role/internal-elb" = "1"
   }
 }

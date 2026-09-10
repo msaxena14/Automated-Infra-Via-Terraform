@@ -3,10 +3,6 @@ variable "vpc_id" {
   type = string
 }
 
-variable "igw_id" {
-  description = "IGW"
-}
-
 variable "project" {
   description = "VPC Provisioned via terraform"
   type        = string

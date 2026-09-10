@@ -3,11 +3,6 @@ variable "vpc_id" {
   type        = string
 }
 
-variable "cidr_block" {
-  description = "The CIDR block for the subnet"
-  type        = string
-}
-
 variable "project" {
   description = "VPC Provisioned via terraform"
   type        = string
@@ -23,11 +18,11 @@ variable "environment" {
 variable "public_subnet_cidrs" {
  type        = list(string)
  description = "Public Subnet CIDR values"
- default     = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
+ default     = ["10.60.0.0/20", "10.60.16.0/20"]
 }
 
 variable "azs" {
  type        = list(string)
  description = "Availability Zones"
- default     = ["ap-south-1a", "ap-south-1b", "ap-south-1c"]
+ default     = ["us-east-1a", "us-east-1b"]
 }
